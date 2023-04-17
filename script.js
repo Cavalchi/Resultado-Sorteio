@@ -173,13 +173,17 @@ query.count().then(count => {
 }).then(results => {
   if (results.length > 0) {
     const person = results[0];
-    const randomNumber = person.get("number");
-    console.log('Número gerado:', randomNumber);
+    const name = person.get("name");
+    const phone = person.get("phone");
+    const email = person.get("email");
+    console.log('Nome:', name);
+    console.log('Telefone:', phone);
+    console.log('Email:', email);
   } else {
     console.log('Nenhum resultado encontrado');
   }
 }).catch(error => {
-  console.error('Erro ao buscar número aleatório:', error);
+  console.error('Erro ao buscar dados:', error);
 });
 // Crie um array com os dados a serem sorteados
 var name = ['Nome1', 'Nome2', 'Nome3', 'Nome4'];
