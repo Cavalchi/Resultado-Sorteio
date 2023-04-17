@@ -154,7 +154,7 @@ form.addEventListener('submit', function(event) {
     .catch(error => console.error(error)))
     .catch(error => console.error(error))
     })
-    , 0200)
+    ,0200)
 
 
   // Adicione este código JavaScript ao seu arquivo JavaScript
