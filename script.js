@@ -155,10 +155,7 @@ fetch('https://parseapi.back4app.com/classes/Person', {
     .catch(error => console.error(error))
     })
     ,0200
-
-
-  // Adicione este código JavaScript ao seu arquivo JavaScript
-let btnSubmit = document.getElementById('btn-submit');
+  let btnSubmit = document.getElementById('btn-submit');
 btnSubmit.addEventListener('click', function() {
   btnSubmit.classList.add('scale');
   setTimeout(function() {
@@ -166,19 +163,29 @@ btnSubmit.addEventListener('click', function() {
   }, 500);
   document.getElementById("btn-submit").addEventListener("click", function(event){
   event.target.disabled = true;
-    Parse.Cloud.run('Person', {}).then(response => {
-  const randomNumber = response.number;
-  
-  // Exiba o número gerado na tela para o cliente
-  console.log('Número gerado:', randomNumber);
+  const Person = Parse.Object.extend("Person");
+const query = new Parse.Query(Person);
+query.count().then(count => {
+  const randomIndex = Math.floor(Math.random() * count);
+  query.skip(randomIndex);
+  query.limit(1);
+  return query.find();
+}).then(results => {
+  if (results.length > 0) {
+    const person = results[0];
+    const randomNumber = person.get("number");
+    console.log('Número gerado:', randomNumber);
+  } else {
+    console.log('Nenhum resultado encontrado');
+  }
 }).catch(error => {
-  console.error('Erro ao chamar a função de nuvem:', error);
-      script
+  console.error('Erro ao buscar número aleatório:', error);
+});
 // Crie um array com os dados a serem sorteados
-var nomes = ['Nome1', 'Nome2', 'Nome3', 'Nome4'];
-var emails = ['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'];
-var telefones = ['1111111111', '2222222222', '3333333333', '4444444444'];
-var numeros = ['1', '2', '3', '4'];
+var name = ['Nome1', 'Nome2', 'Nome3', 'Nome4'];
+var email = ['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'];
+var phone = ['1111111111', '2222222222', '33333', '4444444444'];
+var number = ['1', '2', '3', '4'];
 
 // Função para sortear um elemento de um array
 function sortearElemento(array) {
@@ -206,5 +213,5 @@ script
       
 });
 });
-});
+
   
