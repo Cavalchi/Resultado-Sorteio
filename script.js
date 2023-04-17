@@ -123,40 +123,7 @@ form.addEventListener('submit', function(event) {
   let formData = new FormData(form);
   let formDetail = Object.fromEntries(formData)
   let email = formDetail.email
-  // Enviar os dados para o back4app usando uma solicitação HTTP POST
-  var teste = fetch('https://parseapi.back4app.com/classes/Person', {
-      method: 'GET',
-    headers: {
-      'X-Parse-Application-Id': 'YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J',
-      'X-Parse-REST-API-Key': 'EXeHValff9JzcDdNNqE0ToicNT11fccveKXF4bOW',
-      'Content-Type': 'application/json'
-    }
-  })  
-  .then(response => response.text())
-  .then(result => {
-    setTimeout(()=>{
-      var resultado = JSON.parse(result)
-      var resultadoArr = resultado.results
-      var existe;
-      resultadoArr.forEach((res) => {
-        if (res.email == email){
-          existe = true
-        }else{
-          existe = false
-        }
-      })
-      if(existe == false || resultadoArr.length == 0){
-        fetch('https://parseapi.back4app.com/classes/Person', {
-          method: 'POST',
-        headers: {
-          'X-Parse-Application-Id': 'YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J',
-          'X-Parse-REST-API-Key': 'EXeHValff9JzcDdNNqE0ToicNT11fccveKXF4bOW',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(Object.fromEntries(formData))
-      })  
-      .then(resposta => resposta.text())
-      .then(fetch('https://parseapi.back4app.com/classes/Person', {
+  .then(fetch('https://parseapi.back4app.com/classes/Person', {
         method: 'GET',
       headers: {
         'X-Parse-Application-Id': 'YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J',
@@ -188,7 +155,7 @@ form.addEventListener('submit', function(event) {
     .catch(error => console.error(error))
     }
     }, 0200)
-})
+
 
   // Adicione este código JavaScript ao seu arquivo JavaScript
 let btnSubmit = document.getElementById('btn-submit');
@@ -206,7 +173,38 @@ btnSubmit.addEventListener('click', function() {
   console.log('Número gerado:', randomNumber);
 }).catch(error => {
   console.error('Erro ao chamar a função de nuvem:', error);
+      <script>
+// Crie um array com os dados a serem sorteados
+var nomes = ['Nome1', 'Nome2', 'Nome3', 'Nome4'];
+var emails = ['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'];
+var telefones = ['1111111111', '2222222222', '3333333333', '4444444444'];
+var numeros = ['1', '2', '3', '4'];
+
+// Função para sortear um elemento de um array
+function sortearElemento(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+// Função para exibir os dados sorteados na interface do usuário
+function exibirDadosSorteados() {
+  var nomeSorteado = sortearElemento(nomes);
+  var emailSorteado = sortearElemento(emails);
+  var telefoneSorteado = sortearElemento(telefones);
+  var numeroSorteado = sortearElemento(numeros);
+
+  document.getElementById('nome').innerText = 'Nome: ' + nomeSorteado;
+  document.getElementById('email').innerText = 'Email: ' + emailSorteado;
+  document.getElementById('telefone').innerText = 'Telefone: ' + telefoneSorteado;
+  document.getElementById('numero').innerText = 'Número: ' + numeroSorteado;
+}
+
+// Adicione um evento de clique ao botão "Sortear"
+document.getElementById('btn-submit').addEventListener('click', function() {
+  exibirDadosSorteados();
+});
+</script>
+      
 });
 });
 });
-});
+  
