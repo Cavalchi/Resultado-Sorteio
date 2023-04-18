@@ -150,6 +150,9 @@ fetch('https://parseapi.back4app.com/classes/Person', {
     document.getElementById('numero-sorteado').classList.remove('sorteado');
     document.getElementById('numero-sorteado').appendChild(texto);
   }, 1000);
+  setTimeout(function() {
+  // código a ser executado após o tempo limite de 5 segundos
+}, 5000);
 })
 .catch(error => console.error(error))
     .catch(error => console.error(error))
