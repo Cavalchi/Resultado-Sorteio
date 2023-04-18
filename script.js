@@ -125,37 +125,32 @@ let formData = new FormData(form);
 let formDetail = Object.fromEntries(formData);
 let email = formDetail.email;
 
-fetch('https://parseapi.back4app.com/classes/Person', {
-  method: 'GET',
- headers: {
-  'Content-Type': 'application/json',
- 'X-Parse-Application-Id': 'YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J',
-    'X-Parse-REST-API-Key': 'EXeHValff9JzcDdNNqE0ToicNT11fccveKXF4bOW',
-    
+const Parse = require('parse/node');
 
-  }
-})
-.then(resposta => resposta.text())
-.then(result => {
-  setTimeout(() => {
-    var number;
-    var resultado = JSON.parse(result);
-    var resultadoArr = resultado.results;
-    resultadoArr.forEach((res) => {
-      if (res.email == email) {
-        number = res.number;
-      } else {
-       let existe = false;
-let count = resultadoArr.length;
-const Query = Parse.Object.extend('Person');
-const query = new Parse.Query(Query);
-query.limit(1);
-query.skip(Math.floor(Math.random() * count));
-query.first().then((result) => {
-  console.log(result);
-}).catch((error) => {
+// Inicialize o Parse
+Parse.initialize('YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J', 'au7MMDVyPkYupjM9FuYI8niBmZlyggsJzq1mPEUE');
+Parse.serverURL = 'https://parseapi.back4app.com/classes/Person';
+
+// Crie uma consulta para obter todos os objetos da classe
+const query = new Parse.Query('Person');
+
+// Conte quantos objetos existem na classe
+query.count().then(count => {
+  // Gere um número aleatório dentro do intervalo de objetos existentes
+  const randomIndex = Math.floor(Math.random() * count);
+  
+  // Defina o limite da consulta para 1 objeto, pule a quantidade de objetos aleatórios gerados
+  query.limit(1);
+  query.skip(randomIndex);
+  
+  // Execute a consulta e obtenha o objeto aleatório
+  return query.first();
+}).then(object => {
+  console.log(object.toJSON());
+}).catch(error => {
   console.error(error);
 });
+
 
       }
     })
