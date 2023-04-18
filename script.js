@@ -144,7 +144,7 @@ fetch('https://parseapi.back4app.com/classes/Person', {
         number = res.number;
       } else {
         existe = false;
-        const Query = Parse.Object.extend('NOME_DA_CLASSE');
+        const Query = Parse.Object.extend('Person');
 const query = new Parse.Query(Query);
 query.limit(1);
 query.skip(Math.floor(Math.random() * count));
