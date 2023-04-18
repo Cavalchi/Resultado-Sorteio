@@ -117,7 +117,7 @@ form.addEventListener('submit', function(event) {
   setTimeout(()=> {
     document.getElementById('btn-submit').setAttribute('disabled', true)
   }, 0001)
-      
+      const Parse = require('parse/node');
 
   // Coletar os dados do formulário
   // Coletar os dados do formulário
