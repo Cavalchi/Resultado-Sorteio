@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,29 +30,23 @@
   <div id="main-container">
     <h1>Descubra o ganhador do Sorteio</h1>
     <form id="register-form" action="">
+      <div class="full-box"></div>
       <div class="full-box">
-        
-        
-      </div>
-      <div class="full-box">
-        <input id="btn-submit" type="submit" value="Sorteiar">
+        <input id="btn-submit" type="submit" value="Sortear">
         <div id="numero-sorteio">
-          
           <input type="text" id="input-numero-sorteio" disabled>
         </div>
         <div id="numero-sorteado" class="sorteado">
-          <label style="font-size:30px">Dados do vencedor: </label>
         </div>
       </div>
     </form>
   </div>
-  <p class="error-validation template"></p>
-  <script src='script.js'></script>
-  <p id="nome"></p>
-<p id="email"></p>
-<p id="telefone"></p>
-<p id="numero"></p>
-
+ <div id="user-info-container">
+  <p id="nome" class="user-info"></p>
+  <p id="sobrenome" class="user-info"></p>
+  <p id="email" class="user-info"></p>
+  <p id="telefone" class="user-info"></p>
+  <p id="numero" class="user-info"></p>
 </div>
 </body>
 </html>
