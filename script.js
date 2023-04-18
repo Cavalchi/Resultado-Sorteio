@@ -178,6 +178,10 @@ btnSubmit.addEventListener('click', function() {
   const Person = Parse.Object.extend("Person");
 const query = new Parse.Query(Person);
 query.count().then(count => {
+  var name = ['Nome1', 'Nome2', 'Nome3', 'Nome4'];
+var email = ['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'];
+var phone = ['1111111111', '2222222222', '33333', '4444444444'];
+var number = ['1', '2', '3', '4'];
   const randomIndex = Math.floor(Math.random() * count);
   query.skip(randomIndex);
   query.limit(1);
@@ -198,10 +202,7 @@ query.count().then(count => {
   console.error('Erro ao buscar dados:', error);
 });
 // Crie um array com os dados a serem sorteados
-var name = ['Nome1', 'Nome2', 'Nome3', 'Nome4'];
-var email = ['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'];
-var phone = ['1111111111', '2222222222', '33333', '4444444444'];
-var number = ['1', '2', '3', '4'];
+
 
 // Função para sortear um elemento de um array
 function sortearElemento(array) {
