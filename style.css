@@ -39,11 +39,11 @@ body {
 }
 form {
     display:flex
-    flex-wrap:wrap
+    flex-wrapwrap
 }
 .full-box {
     flex:1
-    position:relative
+    positionrelative
 }
  input[type="submit"] {
     background-color: #009BDB;
@@ -52,21 +52,31 @@ form {
     border-radius: 20px;
     height: 40px;
     cursor: pointer;
-  }
+ }
 #numero-sorteio {
     position:absolute
-    top:0
-    right:20
-    display:flex
-    justify-content:center
-    align-items:center
-    margin-top:25px
-    margin-right:20px
+    top
+    right20
+    displayflex
+    justify-contentcenter
+    align-itemscenter
+    margin-top25pxs
+    margin-right20px
 }
 #input-numero-sorteio {
     border:none
-    background-color:transparent
-    width:100px
-    font-size:28px
-    font-weight:bold
+    background-colortransparent
+    width100px
+    font-size28px
+    font-weightbold
+}
+
+/* Adicione o seguinte código CSS */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 30px;
+  
 }
