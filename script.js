@@ -120,7 +120,6 @@ form.addEventListener('submit', function(event) {
       const Parse = require('parse/node');
 
   // Coletar os dados do formulário
-  // Coletar os dados do formulário
 let formData = new FormData(form);
 let formDetail = Object.fromEntries(formData);
 let email = formDetail.email;
@@ -134,6 +133,28 @@ fetch('https://parseapi.back4app.com/classes/Person', {
     'Content-Type': 'application/json'
   }
 })
+.then(resposta => resposta.text())
+.then(result => {
+  setTimeout(() => {
+    var number;
+    var resultado = JSON.parse(result);
+    var resultadoArr = resultado.results;
+    resultadoArr.forEach((res) => {
+      if (res.email == email) {
+        number = res.number;
+      } else {
+        existe = false;
+        const Query = Parse.Object.extend('Person');
+const query = new Parse.Query(Query);
+query.limit(1);
+query.skip(Math.floor(Math.random() * count));
+query.first().then((result) => {
+  console.log(result);
+}).catch((error) => {
+  console.error(error);
+});
+      }
+    });
 .then(resposta => resposta.text())
 .then(result => {
   setTimeout(() => {
@@ -232,5 +253,3 @@ script
       
 });
 });
-
-  
