@@ -128,8 +128,9 @@ let email = formDetail.email;
 fetch('https://parseapi.back4app.com/classes/Person', {
   method: 'GET',
   headers: {
-    'X-Parse-Application-Id': 'YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J',
-    'X-Parse-REST-API-Key': 'EXeHValff9JzcDdNNqE0ToicNT11fccveKXF4bOW',
+   Parse.initialize('YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J', 'au7MMDVyPkYupjM9FuYI8niBmZlyggsJzq1mPEUE', 'yvd92zfzIdacsPzUl9xUPUY4mcACLHCF8kIui5rn
+');
+Parse.serverURL = 'https://parseapi.back4app.com/classes/Person';
     'Content-Type': 'application/json'
   }
 })
