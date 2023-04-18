@@ -131,7 +131,6 @@ fetch('https://parseapi.back4app.com/classes/Person', {
  'X-Parse-Application-Id': 'YX1d8JAZy0FLhG22LfaS7gpibFwDOxTgAlpZcM2J',
     'X-Parse-REST-API-Key': 'EXeHValff9JzcDdNNqE0ToicNT11fccveKXF4bOW',
     'X-Parse-Master-Key': 'yvd92zfzIdacsPzUl9xUPUY4mcACLHCF8kIui5rn'
-Parse.serverURL = 'https://parseapi.back4app.com/classes/Person';
     'Content-Type': 'application/json'
   }
 })
